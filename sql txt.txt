@@ -1,0 +1,12 @@
+SELECT * FROM buy; -- 조회
+SELECT mem_id AS '회원 아이디', SUM(price * amount) AS '총 구매 금액' FROM buy; -- buy 테이블에서 회원 아이디와 총 구매 금액 조회
+SELECT mem_id AS '회원 아이디', SUM(price * amount) AS '구매금액' FROM buy GROUP BY mem_id; -- buy 테이블에서 회원아이디 별로 회원 아이디와 총 구매 금액 조회
+SELECT mem_id AS '회원 아이디', SUM(price * amount) AS '구매금액' FROM buy GROUP BY mem_id ORDER BY SUM(price * amount) DESC; -- buy 테이블에서 회원아이디 별로 회원 아이디와 총 구매 금액 을 조회하는데 총 구매 금액 내림차순으로 조회
+SELECT mem_id AS '회원 아이디', SUM(price * amount) AS '구매금액' FROM buy GROUP BY mem_id ORDER BY SUM(price * amount) DESC limit 2; -- buy 테이블에서 회원아이디 별로 회원 아이디와 총 구매 금액 을 조회하는데 총 구매 금액 내림차순으로 조회하는데 상위 2명만 조회
+SELECT mem_id AS '회원 아이디', SUM(price * amount) AS '구매금액' FROM buy GROUP BY mem_id having SUM(price * amount) >= 1000 ORDER BY SUM(price * amount) DESC; -- buy 테이블에서 회원아이디 별로 회원 아이디와 총 구매 금액 을 조회하는데 총 구매 금액 내림차순으로 조회하는데 총 구매금액이 1000이상인 회원을 총 구매 금액 내림차순으로 조회
+SELECT * FROM member;
+SELECT mem_id AS '회원아이디', SUM(price * amount) AS '총 구매 금액' FROM buy GROUP BY mem_id;
+SELECT mem_id AS '회원 아이디', SUM(price * amount) AS '구매금액' FROM buy GROUP BY mem_id having SUM(price * amount) < 1000 ORDER BY SUM(price * amount); -- buy 테이블에서 회원아이디 별로 회원 아이디와 총 구매 금액 을 조회하는데 총 구매 금액 내림차순으로 조회하는데 총 구매 금액이 1000미만인 회원중에서 총 구매 금액 오름차순으로 조회
+SELECT * FROM member WHERE mem_number = 4; -- member테이블에서 mem_number가 4이상인 회원만 조회
+SELECT mem_id, mem_name FROM member WHERE height <= 162; -- member테이블에서 height가 162이하인 회원만 조회
+SELECT mem_name, height, mem_number FROM member WHERE height >= 165 AND mem_number > 6; -- member 테이블에서 height가 165이상이면서 mem_number가 6초과인 회원을 조회
